@@ -1,44 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Helloworld</groupId>
-  <artifactId>Helloworld</artifactId>
+  <groupId>testing</groupId>
+  <artifactId>testing</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Helloworld Maven Webapp</name>
+  <name>testing Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
 
   <dependencies>
     <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.4.1.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>7.0</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.6</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-core</artifactId>
+      <version>1.17</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.17</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-json</artifactId>
+      <version>1.17</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.3.2</version>
+      <version>4.13-beta-2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.3.2</version>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>3.3.0</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId> org.apache.cassandra</groupId>
+      <artifactId>cassandra-all</artifactId>
+      <version>0.8.1</version>
+
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>com.github.tomakehurst</groupId>
+      <artifactId>wiremock-jre8</artifactId>
+      <version>2.21.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>21.0</version>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+      <version>8.0</version>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>com.auth0</groupId>-->
+    <!--<artifactId>java-jwt</artifactId>-->
+    <!--<version>3.8.0</version>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.9.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.12</version>
+    </dependency>
+    <dependency>
+      <groupId>com.warrenstrange</groupId>
+      <artifactId>googleauth</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>javax.websocket</groupId>-->
+    <!--<artifactId>javax.websocket-api</artifactId>-->
+    <!--<version>1.1</version>-->
+    <!--</dependency>-->
   </dependencies>
 
 
   <build>
-    <finalName>Helloworld</finalName><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <finalName>testing</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>9.4.1.v20170120</version>
+          <configuration>
+            <webApp>
+              <contextPath>/example</contextPath>
+            </webApp>
+          </configuration>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
@@ -58,7 +168,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.2</version>
+          <version>2.4</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
@@ -69,210 +179,17 @@
           <version>2.8.2</version>
         </plugin>
 
-
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.22.2</version>
-          <executions>
-            <execution>
-              <id>perform-it</id>
-              <goals>
-                <goal>integration-test</goal>
-              </goals>
-              <configuration>
-                <systemProperties>
-                  <property>
-                    <name>servlet.port</name>
-                    <value>${servlet.port}</value>
-                  </property>
-                </systemProperties>
-              </configuration>
-            </execution>
-            <execution>
-              <id>verify-it</id>
-              <goals>
-                <goal>verify</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
-
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <servlet.port>8080</servlet.port>
-
-    <payara.adminPort>4848</payara.adminPort>
-    <payara.username>admin</payara.username>
-    <payara.password></payara.password>
-    <payara.hostname>localhost</payara.hostname>
-    <payara.domainName>domain1</payara.domainName>
-    <payara.home></payara.home>
-    <payara.domainDir>${payara.home}/glassfish/domains</payara.domainDir>
-  </properties>
-
-<!--  <build>-->
-<!--    <plugins>-->
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--        <version>2.21.0</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>perform-it</id>-->
-<!--            <goals>-->
-<!--              <goal>integration-test</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <systemProperties>-->
-<!--                <property>-->
-<!--                  <name>servlet.port</name>-->
-<!--                  <value>${servlet.port}</value>-->
-<!--                </property>-->
-<!--              </systemProperties>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--          <execution>-->
-<!--            <id>verify-it</id>-->
-<!--            <goals>-->
-<!--              <goal>verify</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
-
-<!--      <plugin>-->
-<!--        <groupId>org.codehaus.cargo</groupId>-->
-<!--        <artifactId>cargo-maven2-plugin</artifactId>-->
-<!--        <version>1.6.7</version>-->
-<!--        <configuration>-->
-<!--          <skip>${skipTests}</skip>-->
-<!--        </configuration>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>deploy</id>-->
-<!--            <phase>pre-integration-test</phase>-->
-<!--            <goals>-->
-<!--              <goal>redeploy</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--          <execution>-->
-<!--            <id>undeploy</id>-->
-<!--            <phase>post-integration-test</phase>-->
-<!--            <goals>-->
-<!--              <goal>undeploy</goal>-->
-<!--            </goals>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
-<!--  </build>-->
-
-  <profiles>
-    <profile>
-      <id>payara5x-remote</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.codehaus.cargo</groupId>
-              <artifactId>cargo-maven2-plugin</artifactId>
-              <configuration>
-                <container>
-                  <containerId>glassfish5x</containerId>
-                  <type>remote</type>
-                </container>
-                <configuration>
-                  <type>runtime</type>
-                  <properties>
-                    <cargo.remote.username>${payara.username}</cargo.remote.username>
-                    <cargo.remote.password>${payara.password}</cargo.remote.password>
-                    <cargo.glassfish.admin.port>${payara.adminPort}</cargo.glassfish.admin.port>
-                    <cargo.hostname>${payara.hostname}</cargo.hostname>
-                    <cargo.servlet.port>${servlet.port}</cargo.servlet.port>
-                  </properties>
-                </configuration>
-              </configuration>
-              <!-- provides JSR88 client API to deploy on Payara -->
-              <dependencies>
-                <dependency>
-                  <groupId>org.glassfish.main.deployment</groupId>
-                  <artifactId>deployment-client</artifactId>
-                  <version>5.1.0</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-
-    <profile>
-      <id>payara5x-local</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.cargo</groupId>
-            <artifactId>cargo-maven2-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>start-cargo</id>
-                <phase>pre-integration-test</phase>
-              </execution>
-              <execution>
-                <id>stop-cargo</id>
-                <phase>post-integration-test</phase>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.codehaus.cargo</groupId>
-              <artifactId>cargo-maven2-plugin</artifactId>
-              <configuration>
-                <container>
-                  <containerId>glassfish-5x</containerId>
-                  <type>installed</type>
-                  <home>${payara.home}</home>
-                </container>
-                <configuration>
-                  <type>existing</type>
-                  <home>${payara.domainDir}</home>
-                  <properties>
-                    <cargo.remote.username>${payara.username}</cargo.remote.username>
-                    <cargo.remote.password>${payara.password}</cargo.remote.password>
-                    <cargo.glassfish.admin.port>${payara.adminPort}</cargo.glassfish.admin.port>
-                    <cargo.hostname>${payara.hostname}</cargo.hostname>
-                    <cargo.glassfish.domain.name>${payara.domainName}</cargo.glassfish.domain.name>
-                  </properties>
-                </configuration>
-              </configuration>
-              <!-- provides JSR88 client API to deploy on Payara -->
-              <dependencies>
-                <dependency>
-                  <groupId>org.glassfish.main.deployment</groupId>
-                  <artifactId>deployment-client</artifactId>
-                  <version>5.0</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-  </profiles>
-
 </project>
