@@ -1,5 +1,9 @@
 package Resource;
 
+import Services.ServiceCommunication;
+
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -8,10 +12,12 @@ import javax.ws.rs.core.Response;
 
 public class status {
 
+    @Inject
+    private ServiceCommunication serviceCommunication;
 
     @GET
     public Response all() {
-        return Response.ok("Op deze manier kun je wel data returnen", MediaType.APPLICATION_JSON).build();
+        return Response.ok(serviceCommunication.statusRegistreren(), MediaType.APPLICATION_JSON).build();
     }
 
 }
