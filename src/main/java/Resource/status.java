@@ -24,6 +24,8 @@ public class status {
         List<data> datalist = new ArrayList<>(); //aanmaken lijst van statussen
         datalist.add(serviceCommunication.statusRegistreren()); // toevoegen lijst registreren
         datalist.add(serviceCommunication.statusFronendRegistreren());
+        datalist.add(serviceCommunication.statusSimulatie());
+        datalist.add(serviceCommunication.statusVerplaatsingsysteem());
         return Response.ok(datalist, MediaType.APPLICATION_JSON).build();
     }
 

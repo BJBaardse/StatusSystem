@@ -5,11 +5,18 @@ public class data {
     private int returncode;
     private String log;
     private String serviceName;
-    public data(String serviceName, boolean isup, int returncode, String log) {
+
+    public String getLink() {
+        return link;
+    }
+
+    private String link;
+    public data(String serviceName, boolean isup, int returncode, String log, String link) {
         this.serviceName = serviceName;
         this.isup = isup;
         this.returncode = returncode;
         this.log = log;
+        this.link = link;
     }
 
 
