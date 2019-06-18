@@ -5,7 +5,6 @@ public class data {
     private int returncode;
     private String log;
     private String serviceName;
-
     public data(String serviceName, boolean isup, int returncode, String log) {
         this.serviceName = serviceName;
         this.isup = isup;
